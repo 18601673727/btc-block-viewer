@@ -12,7 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: { children: React.ReactElement[] }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -23,28 +23,51 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const container = {
+    margin: `0 auto`,
+    padding: `0 1rem`,
+  }
+
   return (
-    <>
+    <div
+      style={{
+        display: `flex`,
+        flexDirection: `column`,
+        minHeight: `100vh`,
+      }}
+    >
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
+          minHeight: `80vh`,
+          background: `white`,
         }}
       >
-        <main>{children}</main>
-        <footer
+        <main
           style={{
-            marginTop: `2rem`,
+            ...container,
+            flex: 1,
+          }}
+        >
+          {children}
+        </main>
+      </div>
+      <footer>
+        <div
+          style={{
+            ...container,
+            flex: 1,
+            color: `white`,
           }}
         >
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
-        </footer>
-      </div>
-    </>
+          <a href="https://www.gatsbyjs.com">Gatsby</a>, API by
+          {` `}
+          <a href="https://www.blockchain.com">Blockchain.com</a>
+        </div>
+      </footer>
+    </div>
   )
 }
 

@@ -10,6 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
+  background-color: #007bff;
   font-family: georgia, serif;
   font-weight: normal;
   word-wrap: break-word;
@@ -51,6 +52,8 @@ template {
   display: none;
 }
 a {
+  color: white;
+  font-weight: bold;
   background-color: transparent;
   -webkit-text-decoration-skip: objects;
 }
@@ -345,18 +348,6 @@ hgroup {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-ul {
-  margin-left: 1.45rem;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
-  list-style-position: outside;
-  list-style-image: none;
-}
 ol {
   margin-left: 1.45rem;
   margin-right: 0;
@@ -390,14 +381,7 @@ dd {
   margin-bottom: 1.45rem;
 }
 p {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
+  margin: 0;
 }
 pre {
   margin-left: 0;
@@ -590,8 +574,84 @@ pre tt:before,
 pre tt:after {
   content: "";
 }
-@media only screen and (max-width: 480px) {
-  html {
-    font-size: 100%;
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.money-label {
+  color: white;
+  background: #2ecc40;
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  background: #007bff;
+  height: 10vh;
+}
+
+.search-input,
+.info-table,
+.transaction-grid {
+  font-family: monospace;
+}
+
+.search-input {
+  display: block;
+  width: 100%;
+  appearance: none;
+  outline: none;
+  border: 2px solid #007bff;
+  height: 3rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.info-table td {
+  font-size: 80%;
+}
+
+.info-table tr td:last-child {
+  text-align: right;
+}
+
+.transaction-grid {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 2rem 1fr 1fr auto;
+  gap: 0.5rem 1rem;
+  font-size: 80%;
+  margin-bottom: 2rem;
+  background: #dddddd;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+@media only screen and (max-width: 1440px) {
+  .info-table {
+    width: 100%;
+    overflow-x: scroll;
+  }
+  table,
+  footer,
+  .search-input {
+    font-size: 80%;
+  }
+  .search-input {
+    letter-spacing: 0;
+  }
+  .transaction-grid {
+    overflow-x: scroll;
+    grid-template-rows: 20px 50px auto auto;
+    grid-template-columns: 1.6rem auto;
   }
 }
